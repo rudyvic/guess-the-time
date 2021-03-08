@@ -1,0 +1,41 @@
+********
+GAMEPLAY
+********
+_ bonus time for correct answer (relative to time taken)
+_ negative time for incorrect answer
+
+
+********
+GRAPHIC
+********
+_ make transiction between scenes
+_ animate buttons
+_ buttons with different colors if correct/wrong (also shader to do the contourns af the selected button?)
+
+
+********
+UI
+********
+_ save the highscore and show it in the mainscene and in the gamescene
+_ maybe something like "ohhh c'mon, you are near your previous record!" when the score is near the record
+
+
+********
+MUSIC
+********
+_ add background music
+_ add fx for correct and wrong answer, time over
+
+
+********
+OTHER
+********
+_ do screenshots
+_ write the devlog on itch.io (images and gifs)
+_ do bootsplash screen
+_ spread on twitter, discord and reddit the itch.io image and link
+
+
+********
+BUGS
+********
