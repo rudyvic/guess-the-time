@@ -5,23 +5,21 @@
 
 	------------------------------
 		
-		License (CC0)
-	http://creativecommons.org/publicdomain/zero/1.0/
+		License (MIT)
 
-	You may use the code of this project in personal and commercial projects.
-
-	Credit Rudy Vicario.
+	Credit Rudy Vicario, 2021.
 
 	Follow me on:
 		- Itch.io: [ https://rudyvic.itch.io ]
 		- Twitter: [ https://twitter.com/rudyvic95 ]
 		- Website: [ https://www.rudyvicario.altervista.org ]
+		- GitHub:  [ https://github.com/rudyvic ]
 
 	------------------------------
 
 	ASSETS
 
-	Font: -- [https://sev.dev/fonts/oxanium/]
+	Font: Avenixel
 
 
 ###############################################################################
@@ -39,13 +37,19 @@ v0.2
 _ basic animations for correct/wrong answers
 _ buttons with different colors if correct/wrong
 
-v0.3
+v0.3	<=========== ACTUAL VERSION ============
 _ save highscore and last 5 scores
 _ add "stats" menu
+_ icon
 
-<=========== ACTUAL VERSION
+
+===========
+PLANNED
+RELEASES
+===========
 
 v0.4
+_ background
 _ add music and fx
 
 v0.5

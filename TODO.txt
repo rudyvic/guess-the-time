@@ -5,6 +5,7 @@ _ different modes:
 	- learn: fixed buttons
 	- compete: random buttons
 _ bonus time for correct answer (relative to time taken)
+_ score system instead of number of correct answer (see GDD)
 
 
 ********
@@ -12,7 +13,7 @@ GRAPHIC
 ********
 _ add animated background
 _ change the aspect ratio of the screen (maybe not fixed but expandable)
-_ make transiction between scenes
+_ add transiction between scenes (see GDD)
 _ animate buttons
 _ better animations
 _ colored progress bar (relative to time remaining)
@@ -37,8 +38,6 @@ _ add fx for correct and wrong answer, time over
 ********
 OTHER
 ********
-_ do screenshots
-_ change fonts in assets in readme
 _ write the devlog on itch.io (images and gifs)
 _ do bootsplash screen
 _ spread on twitter and reddit the itch.io image and link
