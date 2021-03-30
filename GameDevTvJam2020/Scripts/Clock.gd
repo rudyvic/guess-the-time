@@ -11,7 +11,6 @@ func _ready():
 	short = $base/short
 #	$AnimationPlayer.play("rotate_minutes")
 
-
 func new_random_time():
 	var prev_clock_time = ClockTime.instance()
 	prev_clock_time.set_equal_to($ClockTime)
@@ -24,3 +23,9 @@ func new_random_time():
 	
 	short.rotation_degrees = (($ClockTime.hour * 360.0) / 12.0) - 90
 	long.rotation_degrees = (($ClockTime.minute * 360.0) / 60.0) 
+
+func rotate_minutes(speed):
+	$AnimationPlayer.play("rotate_minutes",-1,speed)
+
+func rotate_hours(speed):
+	$AnimationPlayer.play("rotate_hours",-1,speed)

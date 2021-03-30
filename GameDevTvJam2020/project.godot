@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GameDevTvJam2020"
+config/name="GuessTheTime"
 run/main_scene="res://Nodes/MainMenuScene.tscn"
 config/icon="res://icon.png"
 

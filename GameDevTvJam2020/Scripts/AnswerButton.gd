@@ -18,3 +18,9 @@ func set_clock_equal_to(other_clock_time):
 
 func _on_Button_pressed():
 	emit_signal("pressed")
+
+func correct_answer():
+	$AnimationPlayer.play("correct_answer")
+
+func wrong_answer():
+	$AnimationPlayer.play("wrong_answer")
