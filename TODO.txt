@@ -2,8 +2,11 @@
 GAMEPLAY
 ********
 _ different modes:
-	- learn: fixed buttons
-	- compete: random buttons
+	- learn: fixed buttons, no time, fixed number of times, 2 different modes:
+		_ basic: learn how to read the analog clock with popups (words or colors) as tutorial
+			 and a fixed sequence of times
+		_ advanced: no popups, random sequence of times
+	- compete: random buttons, time, time penalty and bonuses
 _ bonus time for correct answer (relative to time taken)
 _ score system instead of number of correct answer (see GDD)
 
@@ -17,6 +20,7 @@ _ add transiction between scenes (see GDD)
 _ animate buttons
 _ better animations
 _ colored progress bar (relative to time remaining)
+_ CHILD-STYLE
 
 
 ********
@@ -40,7 +44,7 @@ OTHER
 ********
 _ write the devlog on itch.io (images and gifs)
 _ do bootsplash screen
-_ spread on twitter and reddit the itch.io image and link
+_ code refactor
 
 
 ********

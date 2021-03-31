@@ -9,10 +9,15 @@ func _ready():
 
 func new_random_time():
 	$Clock.new_random_time()
-	$Button1.new_random_time()
-	$Button2.new_random_time()
-	$Button3.new_random_time()
-	$Button4.new_random_time()
+	var excluding_times = []
+	excluding_times.append($Clock/ClockTime._to_string())
+	$Button1.new_random_time(excluding_times)
+	excluding_times.append($Button1.get_clock_time())
+	$Button2.new_random_time(excluding_times)
+	excluding_times.append($Button2.get_clock_time())
+	$Button3.new_random_time(excluding_times)
+	excluding_times.append($Button3.get_clock_time())
+	$Button4.new_random_time(excluding_times)
 	
 	match(randi() % 4):
 		0:

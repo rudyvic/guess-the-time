@@ -42,6 +42,8 @@ _ save highscore and last 5 scores
 _ add "stats" menu
 _ icon
 
+v0.3.1
+_ remove duplicate buttons
 
 ===========
 PLANNED

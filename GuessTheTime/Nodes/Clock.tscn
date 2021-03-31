@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/Clock.gd" type="Script" id=2]
 [ext_resource path="res://Nodes/ClockTime.tscn" type="PackedScene" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "rotate_hours"
 length = 2.0
 loop = true
@@ -34,8 +34,7 @@ tracks/1/keys = {
 "values": [ 0.0, 0.0, 90.0, 180.0, 270.0, 360.0 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "rotate_minutes"
+[sub_resource type="Animation" id=2]
 length = 2.0
 loop = true
 step = 0.5
@@ -87,8 +86,8 @@ hframes = 4
 frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/rotate_hours = SubResource( 2 )
-anims/rotate_minutes = SubResource( 1 )
+anims/rotate_hours = SubResource( 1 )
+anims/rotate_minutes = SubResource( 2 )
 
 [node name="ClockTime" parent="." instance=ExtResource( 3 )]
 

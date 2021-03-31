@@ -27,12 +27,14 @@ func set_random_time():
 	minute = Minutes[rand_range(0, Minutes.size())]
 
 
-func set_random_time_excluding(time):
+func set_random_time_excluding(times):
 	hour = Hours[rand_range(0, Hours.size())]
 	minute = Minutes[rand_range(0, Minutes.size())]
 	
-	if(is_equal_to(time)):
-		set_random_time_excluding(time)
+	for time in times:
+		if(is_equal_to(time)):
+			set_random_time_excluding(times)
+			return
 
 
 func _to_string():
