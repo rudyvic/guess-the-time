@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/MainMenuScene.gd" type="Script" id=1]
 [ext_resource path="res://Nodes/Clock.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Font/dynamic_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Font/Avenixel-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Font/dynamic_font_small.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Nodes/Background.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Images/standard_theme.tres" type="Theme" id=8]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -29,6 +31,8 @@ font_data = ExtResource( 4 )
 
 [node name="MainMenuScene" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="Background" parent="." instance=ExtResource( 6 )]
 
 [node name="Clock" parent="." instance=ExtResource( 2 )]
 position = Vector2( 104.66, 119.448 )
@@ -63,45 +67,53 @@ __meta__ = {
 [node name="GridContainer" type="GridContainer" parent="MainMenuLayer/CenterContainer"]
 margin_left = 19.0
 margin_right = 159.0
-margin_bottom = 182.0
+margin_bottom = 194.0
 custom_constants/vseparation = 10
 
 [node name="btnLearn" type="Button" parent="MainMenuLayer/CenterContainer/GridContainer"]
 margin_right = 140.0
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 3 )
+margin_bottom = 41.6384
+focus_mode = 0
+theme = ExtResource( 8 )
 disabled = true
+enabled_focus_mode = 0
 text = "Learn"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="btnStart" type="Button" parent="MainMenuLayer/CenterContainer/GridContainer"]
-margin_top = 48.0
+margin_top = 51.0
 margin_right = 140.0
-margin_bottom = 86.0
+margin_bottom = 92.6384
 rect_min_size = Vector2( 140, 0 )
-custom_fonts/font = ExtResource( 3 )
+focus_mode = 0
+theme = ExtResource( 8 )
+enabled_focus_mode = 0
 text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="btnStats" type="Button" parent="MainMenuLayer/CenterContainer/GridContainer"]
-margin_top = 96.0
+margin_top = 102.0
 margin_right = 140.0
-margin_bottom = 134.0
-custom_fonts/font = ExtResource( 3 )
+margin_bottom = 143.638
+focus_mode = 0
+theme = ExtResource( 8 )
+enabled_focus_mode = 0
 text = "Stats"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="btnAbout" type="Button" parent="MainMenuLayer/CenterContainer/GridContainer"]
-margin_top = 144.0
+margin_top = 153.0
 margin_right = 140.0
-margin_bottom = 182.0
-custom_fonts/font = ExtResource( 3 )
+margin_bottom = 194.638
+focus_mode = 0
+theme = ExtResource( 8 )
+enabled_focus_mode = 0
 text = "About"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -123,10 +135,15 @@ __meta__ = {
 }
 
 [node name="AboutPopup" type="PopupPanel" parent="MainMenuLayer"]
-margin_left = -1.0
-margin_top = 109.0
-margin_right = 205.0
-margin_bottom = 323.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -91.5
+margin_top = -123.0
+margin_right = 91.5
+margin_bottom = 165.0
+theme = ExtResource( 8 )
 popup_exclusive = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -135,21 +152,25 @@ __meta__ = {
 [node name="CenterContainer" type="CenterContainer" parent="MainMenuLayer/AboutPopup"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 202.0
-margin_bottom = 223.0
+margin_right = 179.0
+margin_bottom = 284.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GridContainer" type="GridContainer" parent="MainMenuLayer/AboutPopup/CenterContainer"]
-margin_left = 19.0
-margin_right = 179.0
-margin_bottom = 219.0
-custom_constants/vseparation = 10
+margin_left = 3.0
+margin_top = 5.0
+margin_right = 171.0
+margin_bottom = 274.0
+custom_constants/vseparation = 8
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="MainMenuLayer/AboutPopup/CenterContainer/GridContainer"]
-margin_right = 160.0
-margin_bottom = 67.0
+margin_right = 168.0
+margin_bottom = 75.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.784314, 0.760784, 0.168627, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -157,63 +178,81 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Rudy Vicario
 2021"
 align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HSeparator2" type="HSeparator" parent="MainMenuLayer/AboutPopup/CenterContainer/GridContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 83.0
+margin_right = 168.0
+margin_bottom = 88.0
+custom_constants/separation = 5
+
 [node name="Label2" type="Label" parent="MainMenuLayer/AboutPopup/CenterContainer/GridContainer"]
-margin_top = 77.0
-margin_right = 160.0
-margin_bottom = 93.0
+margin_top = 96.0
+margin_right = 168.0
+margin_bottom = 120.0
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.784314, 0.760784, 0.168627, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Follow me on:"
 align = 1
-valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="btnTwitter" type="LinkButton" parent="MainMenuLayer/AboutPopup/CenterContainer/GridContainer"]
-margin_top = 103.0
-margin_right = 160.0
-margin_bottom = 119.0
+margin_top = 128.0
+margin_right = 168.0
+margin_bottom = 144.0
 custom_fonts/font = ExtResource( 5 )
 text = "Twitter (rudyvic95)"
 
 [node name="btnWebsite" type="LinkButton" parent="MainMenuLayer/AboutPopup/CenterContainer/GridContainer"]
-margin_top = 129.0
-margin_right = 160.0
-margin_bottom = 145.0
+margin_top = 152.0
+margin_right = 168.0
+margin_bottom = 168.0
 custom_fonts/font = ExtResource( 5 )
 text = "Website"
 
 [node name="btnItchio" type="LinkButton" parent="MainMenuLayer/AboutPopup/CenterContainer/GridContainer"]
-margin_top = 155.0
-margin_right = 160.0
-margin_bottom = 171.0
+margin_top = 176.0
+margin_right = 168.0
+margin_bottom = 192.0
 custom_fonts/font = ExtResource( 5 )
 text = "Itch.io (rudyvic)"
 
+[node name="HSeparator" type="HSeparator" parent="MainMenuLayer/AboutPopup/CenterContainer/GridContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 200.0
+margin_right = 168.0
+margin_bottom = 220.0
+custom_constants/separation = 20
+
 [node name="btnBack" type="Button" parent="MainMenuLayer/AboutPopup/CenterContainer/GridContainer"]
-margin_top = 181.0
-margin_right = 160.0
-margin_bottom = 219.0
+margin_top = 228.0
+margin_right = 168.0
+margin_bottom = 269.638
 grow_vertical = 0
-custom_fonts/font = ExtResource( 3 )
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="StatsPopup" type="PopupPanel" parent="MainMenuLayer"]
-margin_left = -1.0
-margin_top = 109.0
-margin_right = 205.0
-margin_bottom = 323.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -102.5
+margin_top = -107.0
+margin_right = 103.5
+margin_bottom = 164.0
+theme = ExtResource( 8 )
 popup_exclusive = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -223,20 +262,23 @@ __meta__ = {
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 202.0
-margin_bottom = 210.0
+margin_bottom = 267.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="GridContainer" type="GridContainer" parent="MainMenuLayer/StatsPopup/CenterContainer"]
-margin_left = 20.0
-margin_top = 30.0
-margin_right = 178.0
-margin_bottom = 175.0
+margin_left = 16.0
+margin_top = 15.0
+margin_right = 182.0
+margin_bottom = 247.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="lblHighscore" type="Label" parent="MainMenuLayer/StatsPopup/CenterContainer/GridContainer"]
-margin_right = 158.0
-margin_bottom = 32.0
+margin_right = 166.0
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.784314, 0.760784, 0.168627, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -248,10 +290,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HSeparator2" type="HSeparator" parent="MainMenuLayer/StatsPopup/CenterContainer/GridContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 44.0
+margin_right = 166.0
+margin_bottom = 54.0
+custom_constants/separation = 10
+
 [node name="lblLastScores" type="Label" parent="MainMenuLayer/StatsPopup/CenterContainer/GridContainer"]
-margin_top = 36.0
-margin_right = 158.0
-margin_bottom = 103.0
+margin_top = 58.0
+margin_right = 166.0
+margin_bottom = 133.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.0666667, 0.572549, 0.87451, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -264,12 +313,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HSeparator" type="HSeparator" parent="MainMenuLayer/StatsPopup/CenterContainer/GridContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 137.0
+margin_right = 166.0
+margin_bottom = 187.0
+custom_constants/separation = 50
+
 [node name="btnBack" type="Button" parent="MainMenuLayer/StatsPopup/CenterContainer/GridContainer"]
-margin_top = 107.0
-margin_right = 158.0
-margin_bottom = 145.0
+margin_top = 191.0
+margin_right = 166.0
+margin_bottom = 232.638
 grow_vertical = 0
-custom_fonts/font = ExtResource( 3 )
+focus_mode = 0
+enabled_focus_mode = 0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -281,7 +338,7 @@ margin_top = 352.425
 margin_right = 43.4484
 margin_bottom = 366.425
 custom_fonts/font = ExtResource( 5 )
-text = "v0.3"
+text = "v0.4"
 __meta__ = {
 "_edit_use_anchors_": false
 }

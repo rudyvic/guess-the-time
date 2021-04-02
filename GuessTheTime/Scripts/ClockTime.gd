@@ -37,6 +37,10 @@ func set_random_time_excluding(times):
 			return
 
 
+func set_random_time_excluding_previous():
+	set_random_time_excluding([self.duplicate()])
+
+
 func _to_string():
 	return str(hour) + ":" + str(minute)
 

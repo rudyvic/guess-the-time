@@ -37,7 +37,7 @@ v0.2
 _ basic animations for correct/wrong answers
 _ buttons with different colors if correct/wrong
 
-v0.3	<=========== ACTUAL VERSION ============
+v0.3
 _ save highscore and last 5 scores
 _ add "stats" menu
 _ icon
@@ -45,18 +45,22 @@ _ icon
 v0.3.1
 _ remove duplicate buttons
 
+v0.4
+_ animated background
+_ colored progress bar
+_ new theme
+_ add transition system
+
 ===========
 PLANNED
 RELEASES
 ===========
 
-v0.4
-_ background
-_ add music and fx
-
 v0.5
-_ add learn mode
+- change colored progress bar
+- add music and fx
 
 v0.6
-_ add animated background
+- add learn mode
+
 

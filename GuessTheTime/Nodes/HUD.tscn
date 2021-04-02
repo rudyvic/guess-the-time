@@ -1,18 +1,28 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/HUD.gd" type="Script" id=1]
 [ext_resource path="res://Font/dynamic_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Font/Avenixel-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Font/dynamic_font_small.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Images/ProgressBar/over_bar.png" type="Texture" id=5]
+[ext_resource path="res://Images/ProgressBar/progress_bar.png" type="Texture" id=6]
+[ext_resource path="res://Images/ProgressBar/under_bar.png" type="Texture" id=7]
+[ext_resource path="res://Nodes/Transition.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Images/standard_theme.tres" type="Theme" id=9]
+[ext_resource path="res://Images/pause.png" type="Texture" id=10]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=6]
+size = 48
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=1]
 size = 48
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_bottom = -14
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "correct_answer"
 length = 0.4
 tracks/0/type = "value"
@@ -28,35 +38,22 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "pop"
+[sub_resource type="Animation" id=3]
 length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:rect_scale")
+tracks/0/path = NodePath(".:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 2, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ColorRect:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "wrong_answer"
 length = 0.4
 tracks/0/type = "value"
@@ -84,12 +81,12 @@ tracks/1/keys = {
 "values": [ 0.0, 28.0, -7.0, 7.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "highscore"
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect/lblHighscore:rect_scale")
+tracks/0/path = NodePath("CenterContainer/GridContainer/lblHighscore:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -101,7 +98,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ColorRect/lblHighscore:custom_colors/font_color")
+tracks/1/path = NodePath("CenterContainer/GridContainer/lblHighscore:custom_colors/font_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -124,17 +121,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ProgressBar" type="TextureProgress" parent="GameLayer"]
+margin_right = 207.0
+margin_bottom = 30.0
+rect_scale = Vector2( 1, 0.5 )
+step = 0.01
+value = 100.0
+texture_under = ExtResource( 7 )
+texture_over = ExtResource( 5 )
+texture_progress = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScoreLabel" type="Label" parent="GameLayer"]
 anchor_left = 0.639
 anchor_top = 0.808
 anchor_right = 0.639
 anchor_bottom = 0.808
-margin_left = -20.0149
-margin_top = -15.9841
-margin_right = 19.9851
-margin_bottom = 16.0159
-rect_pivot_offset = Vector2( 19.3624, 15.5611 )
-custom_fonts/font = ExtResource( 2 )
+margin_left = -17.56
+margin_top = -24.32
+margin_right = 22.44
+margin_bottom = 39.68
+rect_pivot_offset = Vector2( 18.1968, 31.8197 )
+custom_fonts/font = SubResource( 6 )
 text = "0"
 align = 1
 valign = 1
@@ -142,54 +152,58 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProgressBar" type="ProgressBar" parent="GameLayer"]
-margin_right = 207.0
-margin_bottom = 14.0
-value = 100.0
-percent_visible = false
-
 [node name="btnPause" type="Button" parent="GameLayer"]
 pause_mode = 1
-margin_left = 154.976
-margin_top = 16.4393
-margin_right = 202.976
-margin_bottom = 38.4393
+margin_left = 160.0
+margin_top = 24.0
+margin_right = 203.309
+margin_bottom = 66.0
+theme = ExtResource( 9 )
 custom_fonts/font = ExtResource( 4 )
-text = "Pause"
+icon = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AboutPopup" type="PopupPanel" parent="GameLayer"]
+[node name="PausePopup" type="PopupPanel" parent="GameLayer"]
 pause_mode = 2
-margin_left = -1.0
-margin_top = 109.0
-margin_right = 205.0
-margin_bottom = 323.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.0
+margin_top = -92.0
+margin_right = 83.0
+margin_bottom = 140.0
+theme = ExtResource( 9 )
 popup_exclusive = true
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="GameLayer/AboutPopup"]
+[node name="CenterContainer" type="CenterContainer" parent="GameLayer/PausePopup"]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 202.0
-margin_bottom = 210.0
+margin_right = 163.0
+margin_bottom = 228.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="GridContainer" type="GridContainer" parent="GameLayer/AboutPopup/CenterContainer"]
-margin_left = 33.0
-margin_top = 18.0
-margin_right = 165.0
-margin_bottom = 188.0
+[node name="GridContainer" type="GridContainer" parent="GameLayer/PausePopup/CenterContainer"]
+margin_left = 14.0
+margin_top = 16.0
+margin_right = 145.0
+margin_bottom = 208.0
 custom_constants/vseparation = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="GameLayer/AboutPopup/CenterContainer/GridContainer"]
-margin_right = 132.0
-margin_bottom = 32.0
+[node name="Label" type="Label" parent="GameLayer/PausePopup/CenterContainer/GridContainer"]
+margin_right = 131.0
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.784314, 0.760784, 0.168627, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -201,10 +215,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label2" type="Label" parent="GameLayer/AboutPopup/CenterContainer/GridContainer"]
-margin_top = 42.0
-margin_right = 132.0
-margin_bottom = 74.0
+[node name="Label2" type="Label" parent="GameLayer/PausePopup/CenterContainer/GridContainer"]
+margin_top = 50.0
+margin_right = 131.0
+margin_bottom = 90.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.784314, 0.760784, 0.168627, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
@@ -215,63 +229,74 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btnMainMenu" type="Button" parent="GameLayer/AboutPopup/CenterContainer/GridContainer"]
-margin_top = 84.0
-margin_right = 132.0
-margin_bottom = 122.0
+[node name="btnMainMenu" type="Button" parent="GameLayer/PausePopup/CenterContainer/GridContainer"]
+margin_top = 100.0
+margin_right = 131.309
+margin_bottom = 141.638
 grow_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+focus_mode = 0
 text = "MainMenu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btnBack" type="Button" parent="GameLayer/AboutPopup/CenterContainer/GridContainer"]
-margin_top = 132.0
-margin_right = 132.0
-margin_bottom = 170.0
+[node name="btnBack" type="Button" parent="GameLayer/PausePopup/CenterContainer/GridContainer"]
+margin_top = 151.0
+margin_right = 131.0
+margin_bottom = 192.638
 grow_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+focus_mode = 0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GameoverLayer" type="Control" parent="."]
+[node name="GameoverLayer" type="PopupPanel" parent="."]
 pause_mode = 2
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="GameoverLayer"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -88.5
-margin_top = -72.0
-margin_right = 90.5
-margin_bottom = 175.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color( 0.266667, 0.227451, 0.227451, 1 )
+margin_left = -99.5
+margin_top = -112.0
+margin_right = 99.5
+margin_bottom = 176.0
+rect_pivot_offset = Vector2( 12, 7 )
+theme = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreLabel" type="Label" parent="GameoverLayer/ColorRect"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -67.5
-margin_top = -109.53
-margin_right = 68.5
-margin_bottom = -21.5298
-custom_fonts/font = ExtResource( 2 )
+[node name="CenterContainer" type="CenterContainer" parent="GameoverLayer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 195.0
+margin_bottom = 284.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="GameoverLayer/CenterContainer"]
+margin_top = 48.0
+margin_right = 191.0
+margin_bottom = 232.0
+custom_constants/vseparation = 13
+
+[node name="TitleLabel" type="Label" parent="GameoverLayer/CenterContainer/GridContainer"]
+margin_right = 191.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 1 )
+text = "Gameover"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="GameoverLayer/CenterContainer/GridContainer"]
+margin_top = 55.0
+margin_right = 191.0
+margin_bottom = 130.0
 text = "Score:
 0"
 align = 1
@@ -280,33 +305,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ContinueButton" type="Button" parent="GameoverLayer/ColorRect"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -42.0
-margin_top = -43.0
-margin_right = 42.0
-margin_bottom = -5.0
-grow_vertical = 0
-custom_fonts/font = ExtResource( 2 )
-text = "Back"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="lblHighscore" type="Label" parent="GameoverLayer/ColorRect"]
+[node name="lblHighscore" type="Label" parent="GameoverLayer/CenterContainer/GridContainer"]
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -61.2515
-margin_top = -15.7307
-margin_right = 62.7485
-margin_bottom = 51.2693
-rect_pivot_offset = Vector2( 61.5994, 32.4799 )
+margin_top = 143.0
+margin_right = 191.0
+margin_bottom = 218.0
+rect_pivot_offset = Vector2( 96, 41 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.960784, 0, 1 )
 text = "New
@@ -317,27 +321,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TitleLabel" type="Label" parent="GameoverLayer"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -91.5
-margin_right = 91.5
-margin_bottom = 171.0
-custom_fonts/font = SubResource( 3 )
-text = "Gameover"
-align = 1
+[node name="ContinueButton" type="Button" parent="GameoverLayer/CenterContainer/GridContainer"]
+margin_top = 143.0
+margin_right = 191.0
+margin_bottom = 184.638
+grow_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GameoverLayer"]
-anims/correct_answer = SubResource( 4 )
-anims/pop = SubResource( 2 )
-anims/wrong_answer = SubResource( 5 )
+anims/correct_answer = SubResource( 2 )
+anims/pop = SubResource( 3 )
+anims/wrong_answer = SubResource( 4 )
 
 [node name="AnimationPlayerHighscore" type="AnimationPlayer" parent="GameoverLayer"]
-anims/highscore = SubResource( 8 )
+anims/highscore = SubResource( 5 )
+
+[node name="Transition" parent="." instance=ExtResource( 8 )]
+margin_left = 8.0
+margin_top = -24.0
+margin_right = 8.0
+margin_bottom = -24.0
 [connection signal="pressed" from="GameLayer/btnPause" to="." method="_on_btnPause"]
-[connection signal="pressed" from="GameLayer/AboutPopup/CenterContainer/GridContainer/btnMainMenu" to="." method="_on_btnMainMenu"]
-[connection signal="pressed" from="GameLayer/AboutPopup/CenterContainer/GridContainer/btnBack" to="." method="_on_btnBack"]
-[connection signal="pressed" from="GameoverLayer/ColorRect/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="GameLayer/PausePopup/CenterContainer/GridContainer/btnMainMenu" to="." method="_on_btnMainMenu"]
+[connection signal="pressed" from="GameLayer/PausePopup/CenterContainer/GridContainer/btnBack" to="." method="_on_btnBack"]
+[connection signal="pressed" from="GameoverLayer/CenterContainer/GridContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]

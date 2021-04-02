@@ -1,12 +1,14 @@
 extends CanvasLayer
 
+signal transition_finished
+
 var speed = 5
 var is_running = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	show_mainmenu_layer()
-	$GameoverLayer/ColorRect.rect_pivot_offset = $GameoverLayer/ColorRect.rect_size / 2
+	show_mainmenu_layer(false)
+	$GameoverLayer.rect_pivot_offset = $GameoverLayer.rect_size/2
 
 
 func reset():
@@ -68,41 +70,46 @@ func _on_ContinueButton_pressed():
 
 func show_game_layer():
 	$GameLayer.visible = true
-	$GameoverLayer.visible = false
+	$GameoverLayer.hide()
 	get_tree().paused = false
 
 
-func show_mainmenu_layer():
+func show_mainmenu_layer(do_transition = true):
 	is_running = false
 	$GameLayer.visible = false
-	$GameoverLayer.visible = false
-	GameController.main_menu()
+	$GameoverLayer.hide()
+	GameController.main_menu(do_transition)
 
 
 func show_gameover_layer(is_highscore):
 	if(is_highscore):
-		$GameoverLayer/ColorRect/lblHighscore.visible = true
+		$GameoverLayer/CenterContainer/GridContainer/lblHighscore.visible = true
 		$GameoverLayer/AnimationPlayerHighscore.play("highscore")
 	else:
-		$GameoverLayer/ColorRect/lblHighscore.visible = false
+		$GameoverLayer/CenterContainer/GridContainer/lblHighscore.visible = false
 		$GameoverLayer/AnimationPlayerHighscore.stop()
 	
-	$GameoverLayer/ColorRect.visible = false
+	$GameoverLayer.show()
 	$GameoverLayer/AnimationPlayer.play("pop")
-	$GameoverLayer/ColorRect/ScoreLabel.text = "Score:\n" + $GameLayer/ScoreLabel.text
+	$GameoverLayer/CenterContainer/GridContainer/ScoreLabel.text = "Score:\n" + $GameLayer/ScoreLabel.text
 	$GameLayer.visible = false
-	$GameoverLayer.visible = true
 	get_tree().paused = false
 
 func _on_btnPause():
 	get_tree().paused = true
-	$GameLayer/AboutPopup.popup()
+	$GameLayer/PausePopup.popup()
 
 func _on_btnBack():
 	get_tree().paused = false
-	$GameLayer/AboutPopup.hide()
+	$GameLayer/PausePopup.hide()
 
 func _on_btnMainMenu():
 	get_tree().paused = false
-	$GameLayer/AboutPopup.hide()
+	$GameLayer/PausePopup.hide()
 	show_mainmenu_layer()
+
+
+func transition_to_scene(from_scene,to_scene):
+	$Transition.fade(from_scene,to_scene)
+	yield($Transition,"transition_finished")
+	emit_signal("transition_finished")

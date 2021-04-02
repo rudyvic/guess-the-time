@@ -14,9 +14,10 @@ func _ready():
 
 
 func start_game():
-	HUD.show_game_layer()
 	HUD.reset()
-	get_tree().change_scene_to(GameScene)
+	HUD.transition_to_scene(null,GameScene)
+	yield(HUD,"transition_finished")
+	HUD.show_game_layer()
 
 func gameover(score):
 	var is_highscore = false
@@ -32,9 +33,13 @@ func gameover(score):
 	save_game()
 	HUD.show_gameover_layer(is_highscore)
 
-func main_menu():
+func main_menu(do_transition = true):
 	load_game()
-	get_tree().change_scene_to(MainMenuScene)
+	if(do_transition):
+		HUD.transition_to_scene(null,MainMenuScene)
+		yield(HUD,"transition_finished")
+	else:
+		get_tree().change_scene_to(MainMenuScene)
 
 func save_game():
 	var save_game = File.new()
@@ -62,3 +67,4 @@ func get_highscore():
 func get_last_scores():
 	load_game()
 	return save_dict["last_scores"]
+	

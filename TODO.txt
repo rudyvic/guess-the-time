@@ -14,7 +14,6 @@ _ score system instead of number of correct answer (see GDD)
 ********
 GRAPHIC
 ********
-_ add animated background
 _ change the aspect ratio of the screen (maybe not fixed but expandable)
 _ add transiction between scenes (see GDD)
 _ animate buttons
@@ -50,3 +49,4 @@ _ code refactor
 ********
 BUGS
 ********
+_ duplicate buttons (again)

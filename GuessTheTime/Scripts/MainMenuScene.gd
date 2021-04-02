@@ -17,7 +17,6 @@ func _on_btnStart():
 
 func _on_btnLearn():
 	pass
-#	GameController.start_game()
 
 func _on_btnStats():
 	$MainMenuLayer/StatsPopup.popup()
