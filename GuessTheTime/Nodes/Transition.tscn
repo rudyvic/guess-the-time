@@ -34,13 +34,10 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
-[node name="Transition" type="Control"]
+[node name="Transition" type="CanvasLayer"]
 pause_mode = 2
-mouse_filter = 2
+layer = 10
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ColorRect" type="ColorRect" parent="."]
 pause_mode = 2

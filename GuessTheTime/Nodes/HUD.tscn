@@ -4,12 +4,21 @@
 [ext_resource path="res://Font/dynamic_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Font/Avenixel-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Font/dynamic_font_small.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Images/ProgressBar/over_bar.png" type="Texture" id=5]
 [ext_resource path="res://Images/ProgressBar/progress_bar.png" type="Texture" id=6]
-[ext_resource path="res://Images/ProgressBar/under_bar.png" type="Texture" id=7]
-[ext_resource path="res://Nodes/Transition.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Images/standard_theme.tres" type="Theme" id=9]
 [ext_resource path="res://Images/pause.png" type="Texture" id=10]
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 207, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 6 )
+region = Rect2( 418, 0, 207, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 6 )
+region = Rect2( 209, 0, 207, 32 )
 
 [sub_resource type="DynamicFont" id=6]
 size = 48
@@ -123,26 +132,25 @@ __meta__ = {
 
 [node name="ProgressBar" type="TextureProgress" parent="GameLayer"]
 margin_right = 207.0
-margin_bottom = 30.0
-rect_scale = Vector2( 1, 0.5 )
+margin_bottom = 32.0
 step = 0.01
 value = 100.0
-texture_under = ExtResource( 7 )
-texture_over = ExtResource( 5 )
-texture_progress = ExtResource( 6 )
+texture_under = SubResource( 8 )
+texture_over = SubResource( 9 )
+texture_progress = SubResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScoreLabel" type="Label" parent="GameLayer"]
-anchor_left = 0.639
-anchor_top = 0.808
-anchor_right = 0.639
-anchor_bottom = 0.808
-margin_left = -17.56
-margin_top = -24.32
-margin_right = 22.44
-margin_bottom = 39.68
+anchor_left = 0.7
+anchor_top = 1.0
+anchor_right = 0.7
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -24.0
+margin_right = 28.0
+margin_bottom = 40.0
 rect_pivot_offset = Vector2( 18.1968, 31.8197 )
 custom_fonts/font = SubResource( 6 )
 text = "0"
@@ -155,9 +163,9 @@ __meta__ = {
 [node name="btnPause" type="Button" parent="GameLayer"]
 pause_mode = 1
 margin_left = 160.0
-margin_top = 24.0
+margin_top = 32.0
 margin_right = 203.309
-margin_bottom = 66.0
+margin_bottom = 74.0
 theme = ExtResource( 9 )
 custom_fonts/font = ExtResource( 4 )
 icon = ExtResource( 10 )
@@ -253,7 +261,6 @@ __meta__ = {
 
 [node name="GameoverLayer" type="PopupPanel" parent="."]
 pause_mode = 2
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -278,9 +285,9 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="GameoverLayer/CenterContainer"]
-margin_top = 48.0
+margin_top = 4.0
 margin_right = 191.0
-margin_bottom = 232.0
+margin_bottom = 276.0
 custom_constants/vseparation = 13
 
 [node name="TitleLabel" type="Label" parent="GameoverLayer/CenterContainer/GridContainer"]
@@ -306,7 +313,6 @@ __meta__ = {
 }
 
 [node name="lblHighscore" type="Label" parent="GameoverLayer/CenterContainer/GridContainer"]
-visible = false
 margin_top = 143.0
 margin_right = 191.0
 margin_bottom = 218.0
@@ -339,13 +345,7 @@ anims/wrong_answer = SubResource( 4 )
 
 [node name="AnimationPlayerHighscore" type="AnimationPlayer" parent="GameoverLayer"]
 anims/highscore = SubResource( 5 )
-
-[node name="Transition" parent="." instance=ExtResource( 8 )]
-margin_left = 8.0
-margin_top = -24.0
-margin_right = 8.0
-margin_bottom = -24.0
 [connection signal="pressed" from="GameLayer/btnPause" to="." method="_on_btnPause"]
 [connection signal="pressed" from="GameLayer/PausePopup/CenterContainer/GridContainer/btnMainMenu" to="." method="_on_btnMainMenu"]
 [connection signal="pressed" from="GameLayer/PausePopup/CenterContainer/GridContainer/btnBack" to="." method="_on_btnBack"]
-[connection signal="pressed" from="GameoverLayer/CenterContainer/GridContainer/ContinueButton" to="." method="_on_ContinueButton_pressed"]
+[connection signal="pressed" from="GameoverLayer/CenterContainer/GridContainer/ContinueButton" to="." method="_on_ContinueButton"]

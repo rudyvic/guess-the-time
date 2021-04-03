@@ -6,16 +6,16 @@ _ different modes:
 		_ basic: learn how to read the analog clock with popups (words or colors) as tutorial
 			 and a fixed sequence of times
 		_ advanced: no popups, random sequence of times
-	- compete: random buttons, time, time penalty and bonuses
+	- play: random buttons, time, time penalty and bonuses, maybe points instead of #correct?
 _ bonus time for correct answer (relative to time taken)
 _ score system instead of number of correct answer (see GDD)
+_ (for points) bonuses for consecutive correct answers (like "2x")
 
 
 ********
 GRAPHIC
 ********
 _ change the aspect ratio of the screen (maybe not fixed but expandable)
-_ add transiction between scenes (see GDD)
 _ animate buttons
 _ better animations
 _ colored progress bar (relative to time remaining)
@@ -25,9 +25,7 @@ _ CHILD-STYLE
 ********
 UI
 ********
-_ buttons pressable by the keyboard
 _ maybe something like "ohhh c'mon, you are near your previous record!" when the score is near the record
-_ add the highscore in the gameover menu
 _ add a plot in the stats menu for the last 5 scores
 
 
@@ -50,3 +48,4 @@ _ code refactor
 BUGS
 ********
 _ duplicate buttons (again)
+_ MAYBE save disappearing issues

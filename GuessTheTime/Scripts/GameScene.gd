@@ -1,11 +1,14 @@
 extends Node2D
 
 var ClockTime = preload("res://Nodes/ClockTime.tscn")
+onready var HUD = get_node("HUD")
 var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	HUD.show_game_layer()
 	new_random_time()
+	HUD.start_game()
 
 func new_random_time():
 	$Clock.new_random_time()
@@ -33,6 +36,9 @@ func new_random_time():
 
 
 func _on_Button1_pressed():
+	if(!HUD.is_running):
+		return
+	
 	if($Clock/ClockTime.to_string() == $Button1/ClockTime.to_string()):
 		score += 1
 		HUD.increment_time()
@@ -44,6 +50,9 @@ func _on_Button1_pressed():
 
 
 func _on_Button2_pressed():
+	if(!HUD.is_running):
+		return
+	
 	if($Clock/ClockTime.to_string() == $Button2/ClockTime.to_string()):
 		score += 1
 		HUD.increment_time()
@@ -55,6 +64,9 @@ func _on_Button2_pressed():
 
 
 func _on_Button3_pressed():
+	if(!HUD.is_running):
+		return
+	
 	if($Clock/ClockTime.to_string() == $Button3/ClockTime.to_string()):
 		score += 1
 		HUD.increment_time()
@@ -66,6 +78,9 @@ func _on_Button3_pressed():
 
 
 func _on_Button4_pressed():
+	if(!HUD.is_running):
+		return
+	
 	if($Clock/ClockTime.to_string() == $Button4/ClockTime.to_string()):
 		score += 1
 		HUD.increment_time()

@@ -1,13 +1,10 @@
 extends CanvasLayer
 
-signal transition_finished
-
 var speed = 5
 var is_running = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	show_mainmenu_layer(false)
 	$GameoverLayer.rect_pivot_offset = $GameoverLayer.rect_size/2
 
 
@@ -49,23 +46,9 @@ func decrement_time():
 func time_finished():
 	get_tree().paused = true
 	is_running = false
-#	$GameLayer/ScoreLabel.text += " GAMEOVER"
-#	yield(get_tree().create_timer(3.0), "timeout")
 	var score = int($GameLayer/ScoreLabel.text)
-	GameController.gameover(score)
-
-
-func _on_StartButton_pressed():
-	show_game_layer()
-	GameController.start_game()
-
-
-func _on_BackButton_pressed():
-	show_mainmenu_layer()
-
-
-func _on_ContinueButton_pressed():
-	show_mainmenu_layer()
+	var is_highscore = GameController.gameover(score)
+	show_gameover_layer(is_highscore)
 
 
 func show_game_layer():
@@ -74,19 +57,12 @@ func show_game_layer():
 	get_tree().paused = false
 
 
-func show_mainmenu_layer(do_transition = true):
-	is_running = false
-	$GameLayer.visible = false
-	$GameoverLayer.hide()
-	GameController.main_menu(do_transition)
-
-
 func show_gameover_layer(is_highscore):
 	if(is_highscore):
-		$GameoverLayer/CenterContainer/GridContainer/lblHighscore.visible = true
+		$GameoverLayer/CenterContainer/GridContainer/lblHighscore.text = "New\nHighscore"
 		$GameoverLayer/AnimationPlayerHighscore.play("highscore")
 	else:
-		$GameoverLayer/CenterContainer/GridContainer/lblHighscore.visible = false
+		$GameoverLayer/CenterContainer/GridContainer/lblHighscore.text = "Highscore\nto beat: " + str(GameController.get_highscore())
 		$GameoverLayer/AnimationPlayerHighscore.stop()
 	
 	$GameoverLayer.show()
@@ -106,10 +82,12 @@ func _on_btnBack():
 func _on_btnMainMenu():
 	get_tree().paused = false
 	$GameLayer/PausePopup.hide()
-	show_mainmenu_layer()
+	GameController.main_menu()
+
+func _on_ContinueButton():
+	get_tree().paused = false
+	GameController.main_menu()
 
 
-func transition_to_scene(from_scene,to_scene):
-	$Transition.fade(from_scene,to_scene)
-	yield($Transition,"transition_finished")
-	emit_signal("transition_finished")
+func start_game():
+	is_running = true

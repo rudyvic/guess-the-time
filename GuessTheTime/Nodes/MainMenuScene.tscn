@@ -90,7 +90,7 @@ rect_min_size = Vector2( 140, 0 )
 focus_mode = 0
 theme = ExtResource( 8 )
 enabled_focus_mode = 0
-text = "Start"
+text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -338,7 +338,7 @@ margin_top = 352.425
 margin_right = 43.4484
 margin_bottom = 366.425
 custom_fonts/font = ExtResource( 5 )
-text = "v0.4"
+text = "v0.5"
 __meta__ = {
 "_edit_use_anchors_": false
 }

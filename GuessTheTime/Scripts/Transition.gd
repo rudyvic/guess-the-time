@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 signal transition_finished
 
@@ -11,7 +11,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func fade(start,end):
+func fade_to(end):
 	$AnimationPlayer.play("fade_out")
 	yield($AnimationPlayer,"animation_finished")
 	get_tree().change_scene_to(end)

@@ -11,13 +11,16 @@ func _ready():
 func new_random_time():
 	$ClockTime.set_random_time_excluding_previous()
 	
-	$Tween.interpolate_property(short,"rotation_degrees",short.rotation_degrees,(($ClockTime.hour * 360.0) / 12.0) - 90,0.3,Tween.TRANS_SINE)
-	$Tween.interpolate_property(long,"rotation_degrees",long.rotation_degrees,(($ClockTime.minute * 360.0) / 60.0),0.3,Tween.TRANS_SINE)
+	var hour = $ClockTime.get_hour()
+	var minute = $ClockTime.get_minute()
+	
+	$Tween.interpolate_property(short,"rotation_degrees",short.rotation_degrees,((hour * 360.0) / 12.0) - 90,0.3,Tween.TRANS_SINE)
+	$Tween.interpolate_property(long,"rotation_degrees",long.rotation_degrees,((minute * 360.0) / 60.0),0.3,Tween.TRANS_SINE)
 	$Tween.start()
 	yield($Tween, "tween_all_completed")
 	
-	short.rotation_degrees = (($ClockTime.hour * 360.0) / 12.0) - 90
-	long.rotation_degrees = (($ClockTime.minute * 360.0) / 60.0) 
+	short.rotation_degrees = ((hour * 360.0) / 12.0) - 90
+	long.rotation_degrees = ((minute * 360.0) / 60.0) 
 
 func rotate_minutes(speed):
 	$AnimationPlayer.play("rotate_minutes",-1,speed)

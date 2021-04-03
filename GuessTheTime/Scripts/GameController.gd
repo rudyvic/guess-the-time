@@ -1,5 +1,8 @@
 extends Node
 
+signal game_saved
+signal game_loaded
+
 var MainMenuScene = preload("res://Nodes/MainMenuScene.tscn")
 var GameScene = preload("res://Nodes/GameScene.tscn")
 
@@ -10,14 +13,12 @@ var save_dict = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	load_game()
 
 
 func start_game():
-	HUD.reset()
-	HUD.transition_to_scene(null,GameScene)
-	yield(HUD,"transition_finished")
-	HUD.show_game_layer()
+	Transition.fade_to(GameScene)
+	yield(Transition,"transition_finished")
 
 func gameover(score):
 	var is_highscore = false
@@ -31,13 +32,13 @@ func gameover(score):
 		is_highscore = true
 	
 	save_game()
-	HUD.show_gameover_layer(is_highscore)
+	return is_highscore
 
 func main_menu(do_transition = true):
 	load_game()
 	if(do_transition):
-		HUD.transition_to_scene(null,MainMenuScene)
-		yield(HUD,"transition_finished")
+		Transition.fade_to(MainMenuScene)
+		yield(Transition,"transition_finished")
 	else:
 		get_tree().change_scene_to(MainMenuScene)
 
@@ -48,6 +49,7 @@ func save_game():
 	# Store the save dictionary as a new line in the save file
 	save_game.store_line(to_json(save_dict))
 	save_game.close()
+	emit_signal("game_saved")
 
 func load_game():
 	var save_game = File.new()
@@ -58,6 +60,7 @@ func load_game():
 	save_dict = parse_json(save_game.get_line())
 	
 	save_game.close()
+	emit_signal("game_loaded")
 	return true
 
 func get_highscore():

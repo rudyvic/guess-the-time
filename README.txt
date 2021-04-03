@@ -51,16 +51,20 @@ _ colored progress bar
 _ new theme
 _ add transition system
 
+v0.5
+_ new colored progress bar
+_ new buttons
+_ refactor of Transition and HUD
+_ small bug fixes
+_ highscore in gameover menu
+
 ===========
 PLANNED
 RELEASES
 ===========
 
-v0.5
-- change colored progress bar
-- add music and fx
-
 v0.6
 - add learn mode
+- add music and fx
 
 
