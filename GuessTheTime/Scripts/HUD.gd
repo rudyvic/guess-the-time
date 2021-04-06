@@ -59,21 +59,25 @@ func show_game_layer():
 
 func show_gameover_layer(is_highscore):
 	if(is_highscore):
-		$GameoverLayer/CenterContainer/GridContainer/lblHighscore.text = "New\nHighscore"
+		$GameoverLayer/CenterContainer/GridContainer/lblHighscore.text = tr("NEW_HIGHSCORE")
 		$GameoverLayer/AnimationPlayerHighscore.play("highscore")
 	else:
-		$GameoverLayer/CenterContainer/GridContainer/lblHighscore.text = "Highscore\nto beat: " + str(GameController.get_highscore())
+		$GameoverLayer/CenterContainer/GridContainer/lblHighscore.text = tr("HIGHSCORE_TO_BEAT") + ": " + str(GameController.get_highscore())
 		$GameoverLayer/AnimationPlayerHighscore.stop()
 	
 	$GameoverLayer.show()
+	$GameoverLayer/CenterContainer/GridContainer/ContinueButton.text = tr("CONTINUE")
+	$GameoverLayer/CenterContainer/GridContainer/ScoreLabel.text = tr("SCORE") + ":\n" + $GameLayer/ScoreLabel.text
 	$GameoverLayer/AnimationPlayer.play("pop")
-	$GameoverLayer/CenterContainer/GridContainer/ScoreLabel.text = "Score:\n" + $GameLayer/ScoreLabel.text
 	$GameLayer.visible = false
 	get_tree().paused = false
 
 func _on_btnPause():
 	get_tree().paused = true
 	$GameLayer/PausePopup.popup()
+	$GameLayer/PausePopup/CenterContainer/GridContainer/btnBack.text = tr("BACK")
+	$GameLayer/PausePopup/CenterContainer/GridContainer/btnMainMenu.text = tr("MAIN_MENU")
+	$GameLayer/PausePopup/CenterContainer/GridContainer/lblPause.text = tr("PAUSE")
 
 func _on_btnBack():
 	get_tree().paused = false

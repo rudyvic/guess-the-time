@@ -58,12 +58,20 @@ _ refactor of Transition and HUD
 _ small bug fixes
 _ highscore in gameover menu
 
+v0.6
+_ add multi-languages support
+_ save last language used
+_ add italian
+_ add button for switching the language
+_ add mute/unmute button (disabled)
+_ window expandable
+
 ===========
 PLANNED
 RELEASES
 ===========
 
-v0.6
+v0.7
 - add learn mode
 - add music and fx
 

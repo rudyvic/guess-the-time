@@ -9,6 +9,7 @@ var GameScene = preload("res://Nodes/GameScene.tscn")
 var save_dict = {
 		"last_scores" : [],
 		"highscore" : 0,
+		"language" : "null",
 	}
 
 # Called when the node enters the scene tree for the first time.
@@ -70,4 +71,14 @@ func get_highscore():
 func get_last_scores():
 	load_game()
 	return save_dict["last_scores"]
-	
+
+func get_language():
+	load_game()
+	if(!save_dict.has("language") || (save_dict["language"] == "null")):
+		save_dict["language"] = TranslationServer.get_locale()
+	return save_dict["language"]
+
+func set_language(language):
+	TranslationServer.set_locale(language)
+	save_dict["language"] = language
+	save_game()

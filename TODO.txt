@@ -6,7 +6,9 @@ _ different modes:
 		_ basic: learn how to read the analog clock with popups (words or colors) as tutorial
 			 and a fixed sequence of times
 		_ advanced: no popups, random sequence of times
-	- play: random buttons, time, time penalty and bonuses, maybe points instead of #correct?
+	- play: random buttons, time, time penalty and bonuses
+		_ classic: score is the number of correct answers
+		_ Points: score is a number based on various variables (combo, reaction time, ...)
 _ bonus time for correct answer (relative to time taken)
 _ score system instead of number of correct answer (see GDD)
 _ (for points) bonuses for consecutive correct answers (like "2x")
@@ -25,8 +27,11 @@ _ CHILD-STYLE
 ********
 UI
 ********
-_ maybe something like "ohhh c'mon, you are near your previous record!" when the score is near the record
-_ add a plot in the stats menu for the last 5 scores
+_ (GAMEOVER) something like "ohhh c'mon, you are near your previous record!" when the score is near the record
+_ (STATS) add a plot in the stats menu for the last 5 scores
+_ (STATS) different stats for all the game modes
+_ (LEARN) tutorial with dialog to learn to read the clock
+_ (SETTINGS) add mute/unmute music and fx
 
 
 ********
@@ -42,6 +47,8 @@ OTHER
 _ write the devlog on itch.io (images and gifs)
 _ do bootsplash screen
 _ code refactor
+_ languages support
+_ online stats (database on Altervista)
 
 
 ********
