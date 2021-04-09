@@ -31,7 +31,7 @@ window/size/width=207
 window/size/height=368
 window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_height"
 
 [importer_defaults]
 

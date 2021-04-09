@@ -59,20 +59,23 @@ _ small bug fixes
 _ highscore in gameover menu
 
 v0.6
-_ add multi-languages support
+_ multi-languages support
 _ save last language used
-_ add italian
-_ add button for switching the language
-_ add mute/unmute button (disabled)
+_ italian support
+_ button for switching the language
+_ mute/unmute button (disabled)
 _ window expandable
+
+v0.7
+_ add learn mode
 
 ===========
 PLANNED
 RELEASES
 ===========
 
-v0.7
-- add learn mode
+v0.8
 - add music and fx
+
 
 

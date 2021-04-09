@@ -1,0 +1,278 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Images/standard_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Font/dynamic_font_small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Font/dynamic_font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Font/Avenixel-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Images/pause.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/HUDLearn.gd" type="Script" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 48
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_bottom = -14
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=8]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("../GameLayer/ScoreLabel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, -2, 0.31864 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.2, 0.2 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("../GameLayer/ScoreLabel:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, -2, 0.31864 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../GameLayer/ScoreLabel:rect_rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 28.0, -7.0, 7.0, 0.0 ]
+}
+
+[node name="HUDLearn" type="CanvasLayer"]
+script = ExtResource( 7 )
+
+[node name="GameLayer" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="GameLayer"]
+anchor_left = 0.7
+anchor_top = 1.0
+anchor_right = 0.7
+anchor_bottom = 1.0
+margin_left = -79.5
+margin_top = -184.0
+margin_right = 4.5
+margin_bottom = -120.0
+rect_pivot_offset = Vector2( 40, 32 )
+custom_fonts/font = SubResource( 1 )
+text = "0/10"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnPause" type="Button" parent="GameLayer"]
+pause_mode = 1
+margin_left = 56.5
+margin_top = -176.0
+margin_right = 99.8091
+margin_bottom = -134.0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
+icon = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PausePopup" type="PopupPanel" parent="GameLayer"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -84.0
+margin_top = -92.0
+margin_right = 83.0
+margin_bottom = 140.0
+theme = ExtResource( 1 )
+popup_exclusive = true
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="GameLayer/PausePopup"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 163.0
+margin_bottom = 228.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="GameLayer/PausePopup/CenterContainer"]
+margin_left = 14.0
+margin_top = 16.0
+margin_right = 145.0
+margin_bottom = 208.0
+custom_constants/vseparation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lblPause" type="Label" parent="GameLayer/PausePopup/CenterContainer/GridContainer"]
+margin_right = 131.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.784314, 0.760784, 0.168627, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Pause"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="GameLayer/PausePopup/CenterContainer/GridContainer"]
+margin_top = 50.0
+margin_right = 131.0
+margin_bottom = 90.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.784314, 0.760784, 0.168627, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnMainMenu" type="Button" parent="GameLayer/PausePopup/CenterContainer/GridContainer"]
+margin_top = 100.0
+margin_right = 131.309
+margin_bottom = 141.638
+grow_vertical = 0
+focus_mode = 0
+text = "MainMenu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnBack" type="Button" parent="GameLayer/PausePopup/CenterContainer/GridContainer"]
+margin_top = 151.0
+margin_right = 131.0
+margin_bottom = 192.638
+grow_vertical = 0
+focus_mode = 0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameoverLayer" type="PopupPanel" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -99.5
+margin_top = -140.0
+margin_right = 99.5
+margin_bottom = 140.0
+rect_pivot_offset = Vector2( 12, 7 )
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="GameoverLayer"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 195.0
+margin_bottom = 276.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="GameoverLayer/CenterContainer"]
+margin_top = 44.0
+margin_right = 191.0
+margin_bottom = 228.0
+custom_constants/vseparation = 13
+
+[node name="TitleLabel" type="Label" parent="GameoverLayer/CenterContainer/GridContainer"]
+margin_right = 191.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 7 )
+text = "Gameover"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="GameoverLayer/CenterContainer/GridContainer"]
+margin_top = 55.0
+margin_right = 191.0
+margin_bottom = 130.0
+text = "Score:
+0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueButton" type="Button" parent="GameoverLayer/CenterContainer/GridContainer"]
+margin_top = 143.0
+margin_right = 191.0
+margin_bottom = 184.638
+grow_vertical = 0
+custom_fonts/font = ExtResource( 3 )
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameoverLayer"]
+anims/correct_answer = SubResource( 8 )
+anims/pop = SubResource( 9 )
+anims/wrong_answer = SubResource( 5 )
+[connection signal="pressed" from="GameLayer/btnPause" to="." method="_on_btnPause"]
+[connection signal="pressed" from="GameLayer/PausePopup/CenterContainer/GridContainer/btnMainMenu" to="." method="_on_btnMainMenu"]
+[connection signal="pressed" from="GameLayer/PausePopup/CenterContainer/GridContainer/btnBack" to="." method="_on_btnBack"]
+[connection signal="pressed" from="GameoverLayer/CenterContainer/GridContainer/ContinueButton" to="." method="_on_ContinueButton"]

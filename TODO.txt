@@ -17,11 +17,11 @@ _ (for points) bonuses for consecutive correct answers (like "2x")
 ********
 GRAPHIC
 ********
-_ change the aspect ratio of the screen (maybe not fixed but expandable)
 _ animate buttons
 _ better animations
 _ colored progress bar (relative to time remaining)
 _ CHILD-STYLE
+_ different random clocks OR unlock different clocks after reaching certain highscores
 
 
 ********
@@ -30,7 +30,6 @@ UI
 _ (GAMEOVER) something like "ohhh c'mon, you are near your previous record!" when the score is near the record
 _ (STATS) add a plot in the stats menu for the last 5 scores
 _ (STATS) different stats for all the game modes
-_ (LEARN) tutorial with dialog to learn to read the clock
 _ (SETTINGS) add mute/unmute music and fx
 
 
@@ -47,7 +46,6 @@ OTHER
 _ write the devlog on itch.io (images and gifs)
 _ do bootsplash screen
 _ code refactor
-_ languages support
 _ online stats (database on Altervista)
 
 

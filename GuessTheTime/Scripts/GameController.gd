@@ -5,6 +5,7 @@ signal game_loaded
 
 var MainMenuScene = preload("res://Nodes/MainMenuScene.tscn")
 var GameScene = preload("res://Nodes/GameScene.tscn")
+var LearnScene = preload("res://Nodes/LearnGameScene.tscn")
 
 var save_dict = {
 		"last_scores" : [],
@@ -19,6 +20,10 @@ func _ready():
 
 func start_game():
 	Transition.fade_to(GameScene)
+	yield(Transition,"transition_finished")
+
+func start_learn():
+	Transition.fade_to(LearnScene)
 	yield(Transition,"transition_finished")
 
 func gameover(score):

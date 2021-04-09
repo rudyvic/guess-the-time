@@ -1,0 +1,106 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scripts/LearnGameScene.gd" type="Script" id=1]
+[ext_resource path="res://Nodes/Background.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Nodes/Clock.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Nodes/HUDLearn.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Images/arrow.png" type="Texture" id=5]
+[ext_resource path="res://Nodes/AnswerButton.tscn" type="PackedScene" id=6]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="Animation" id=8]
+resource_name = "button1"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Button1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.968627, 1, 0, 1 ), Color( 0.184314, 0.184314, 0.356863, 1 ), Color( 0.976471, 0.960784, 0.0156863, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="CenterContainer" type="CenterContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -103.5
+margin_top = -184.0
+margin_right = 103.5
+margin_bottom = 184.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LearnGameScene" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="Background" parent="LearnGameScene" instance=ExtResource( 2 )]
+position = Vector2( 36.5545, 71.2182 )
+
+[node name="Clock" parent="LearnGameScene" instance=ExtResource( 3 )]
+position = Vector2( 105.882, 153.37 )
+scale = Vector2( 3, 3 )
+
+[node name="Button1" parent="LearnGameScene" instance=ExtResource( 6 )]
+position = Vector2( 57.0988, 279.65 )
+
+[node name="Button2" parent="LearnGameScene" instance=ExtResource( 6 )]
+position = Vector2( 150.559, 279.696 )
+
+[node name="Button3" parent="LearnGameScene" instance=ExtResource( 6 )]
+position = Vector2( 56.865, 337.77 )
+
+[node name="Button4" parent="LearnGameScene" instance=ExtResource( 6 )]
+position = Vector2( 149.109, 339.356 )
+
+[node name="HUDLearn" parent="LearnGameScene" instance=ExtResource( 4 )]
+
+[node name="sprArrow" type="AnimatedSprite" parent="LearnGameScene"]
+rotation = 1.5708
+frames = SubResource( 7 )
+frame = 3
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LearnGameScene"]
+anims/button1 = SubResource( 8 )
+[connection signal="pressed" from="LearnGameScene/Button1" to="LearnGameScene" method="_on_Button1_pressed"]
+[connection signal="pressed" from="LearnGameScene/Button2" to="LearnGameScene" method="_on_Button2_pressed"]
+[connection signal="pressed" from="LearnGameScene/Button3" to="LearnGameScene" method="_on_Button3_pressed"]
+[connection signal="pressed" from="LearnGameScene/Button4" to="LearnGameScene" method="_on_Button4_pressed"]

@@ -8,30 +8,30 @@
 [ext_resource path="res://Images/standard_theme.tres" type="Theme" id=9]
 [ext_resource path="res://Images/pause.png" type="Texture" id=10]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 207, 32 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 6 )
 region = Rect2( 418, 0, 207, 32 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 6 )
 region = Rect2( 209, 0, 207, 32 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=1]
 size = 48
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 size = 48
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_bottom = -14
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("../GameLayer/ScoreLabel:rect_scale")
@@ -46,7 +46,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_scale")
@@ -61,7 +61,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0.2, 0.2 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("../GameLayer/ScoreLabel:rect_scale")
@@ -88,7 +88,7 @@ tracks/1/keys = {
 "values": [ 0.0, 28.0, -7.0, 7.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=6]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -137,9 +137,9 @@ margin_right = 103.5
 margin_bottom = -152.0
 step = 0.01
 value = 100.0
-texture_under = SubResource( 1 )
-texture_over = SubResource( 2 )
-texture_progress = SubResource( 3 )
+texture_under = SubResource( 2 )
+texture_over = SubResource( 3 )
+texture_progress = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -154,7 +154,7 @@ margin_top = -160.0
 margin_right = -55.5
 margin_bottom = -96.0
 rect_pivot_offset = Vector2( 18.1968, 31.8197 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
 valign = 1
@@ -294,7 +294,7 @@ custom_constants/vseparation = 13
 [node name="TitleLabel" type="Label" parent="GameoverLayer/CenterContainer/GridContainer"]
 margin_right = 191.0
 margin_bottom = 42.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "Gameover"
 align = 1
 __meta__ = {
@@ -340,12 +340,12 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GameoverLayer"]
-anims/correct_answer = SubResource( 6 )
-anims/pop = SubResource( 7 )
-anims/wrong_answer = SubResource( 8 )
+anims/correct_answer = SubResource( 8 )
+anims/pop = SubResource( 9 )
+anims/wrong_answer = SubResource( 5 )
 
 [node name="AnimationPlayerHighscore" type="AnimationPlayer" parent="GameoverLayer"]
-anims/highscore = SubResource( 9 )
+anims/highscore = SubResource( 6 )
 [connection signal="pressed" from="GameLayer/btnPause" to="." method="_on_btnPause"]
 [connection signal="pressed" from="GameLayer/PausePopup/CenterContainer/GridContainer/btnMainMenu" to="." method="_on_btnMainMenu"]
 [connection signal="pressed" from="GameLayer/PausePopup/CenterContainer/GridContainer/btnBack" to="." method="_on_btnBack"]

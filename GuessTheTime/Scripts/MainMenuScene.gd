@@ -29,7 +29,7 @@ func _on_btnStart():
 	GameController.start_game()
 
 func _on_btnLearn():
-	pass
+	GameController.start_learn()
 
 func _on_btnStats():
 	$MainMenuLayer/StatsPopup.popup()
