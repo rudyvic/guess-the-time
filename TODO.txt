@@ -37,7 +37,9 @@ _ (SETTINGS) add mute/unmute music and fx
 MUSIC
 ********
 _ add background music
-_ add fx for correct and wrong answer, time over
+_ add fx for:
+	_ correct and wrong answer
+	_ timeover (turn down background music volume and reproduce 2 different sounds based on highscore 			or not, then when the scene changes reset the volume)
 
 
 ********
@@ -53,4 +55,4 @@ _ online stats (database on Altervista)
 BUGS
 ********
 _ duplicate buttons (again)
-_ MAYBE save disappearing issues
+

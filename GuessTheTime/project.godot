@@ -10,15 +10,17 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
 
 config/name="GuessTheTime"
 run/main_scene="res://Nodes/MainMenuScene.tscn"
+boot_splash/image="res://Images/icon.png"
+boot_splash/bg_color=Color( 1, 1, 1, 1 )
 config/icon="res://Images/icon.png"
 config/windows_native_icon="res://Images/icon.ico"
+config/version="1.0.0"
 
 [autoload]
 

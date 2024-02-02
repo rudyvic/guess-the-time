@@ -8,6 +8,8 @@ func _ready():
 	$Clock.rotate_minutes(1)
 	TranslationServer.set_locale(GameController.get_language())
 	refresh_texts()
+	
+	$lblVersion.text = "v" + ProjectSettings.get("application/config/version")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -24,6 +26,14 @@ func refresh_texts():
 	else:
 		$MainMenuLayer/CenterContainer/GridContainer/HBoxContainer/btnLanguage.icon.set_region(Rect2(Vector2(0,0),Vector2(32,32)))
 	
+	# volume icon
+	var btn = $MainMenuLayer/CenterContainer/GridContainer/HBoxContainer/btnVolume
+	if(GameController.get_is_muted()):
+		btn.pressed = true
+		btn.icon.set_region(Rect2(Vector2(128,0),Vector2(32,32)))
+	else:
+		btn.pressed = false
+		btn.icon.set_region(Rect2(Vector2(96,0),Vector2(32,32)))
 
 func _on_btnStart():
 	GameController.start_game()
@@ -62,4 +72,13 @@ func _on_btnLanguage():
 		GameController.set_language("it")
 	else:
 		GameController.set_language("en")
+	refresh_texts()
+
+
+func _on_btnVolume():
+	var btn = $MainMenuLayer/CenterContainer/GridContainer/HBoxContainer/btnVolume
+	if(btn.pressed):
+		GameController.set_is_muted(true)
+	else:
+		GameController.set_is_muted(false)
 	refresh_texts()

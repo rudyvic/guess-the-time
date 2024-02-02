@@ -69,13 +69,24 @@ _ window expandable
 v0.7
 _ add learn mode
 
+v1.0.0
+_ semantic versioning
+_ add background music
+_ multiple random clock skins
+_ new icon
+_ new splashscreen
+
 ===========
 PLANNED
 RELEASES
 ===========
 
-v0.8
-- add music and fx
-
+v1.1.0
+- add fx
+- bug fix consecutive same times
+- change background and palette to #1099f6
+- random clocks based on highscore
+- new screenshots and video
+- change stats menu and show miniature of the clocks unlocked (a black version if locked) with the number required to unlock
 
 

@@ -68,20 +68,24 @@ script = ExtResource( 2 )
 
 [node name="base" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+vframes = 4
 hframes = 4
 
 [node name="long" type="Sprite" parent="base"]
 texture = ExtResource( 1 )
+vframes = 4
 hframes = 4
 frame = 1
 
 [node name="short" type="Sprite" parent="base"]
 texture = ExtResource( 1 )
+vframes = 4
 hframes = 4
 frame = 2
 
 [node name="top" type="Sprite" parent="base"]
 texture = ExtResource( 1 )
+vframes = 4
 hframes = 4
 frame = 3
 

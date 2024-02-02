@@ -5,11 +5,11 @@
 [ext_resource path="res://Font/dynamic_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Images/Buttons/buttons.png" type="Texture" id=4]
 
-[sub_resource type="AtlasTexture" id=14]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
 region = Rect2( 160, 0, 80, 40 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "correct_answer"
 length = 0.3
 step = 0.05
@@ -26,7 +26,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.0705882, 0.890196, 0.294118, 1 ), Color( 0.0705882, 0.890196, 0.294118, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "wrong_answer"
 length = 0.3
 step = 0.05
@@ -55,11 +55,11 @@ margin_left = -39.0
 margin_top = -19.0
 margin_right = 39.0
 margin_bottom = 19.0
-texture_normal = SubResource( 14 )
-texture_pressed = SubResource( 14 )
-texture_hover = SubResource( 14 )
-texture_disabled = SubResource( 14 )
-texture_focused = SubResource( 14 )
+texture_normal = SubResource( 1 )
+texture_pressed = SubResource( 1 )
+texture_hover = SubResource( 1 )
+texture_disabled = SubResource( 1 )
+texture_focused = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -84,6 +84,8 @@ __meta__ = {
 [node name="ClockTime" parent="." instance=ExtResource( 2 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/correct_answer = SubResource( 5 )
-anims/wrong_answer = SubResource( 6 )
+anims/correct_answer = SubResource( 2 )
+anims/wrong_answer = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

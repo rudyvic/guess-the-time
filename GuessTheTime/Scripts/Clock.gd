@@ -5,6 +5,12 @@ var short = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
+	var r = randi() % 4
+	$base.frame = r*4
+	$base/long.frame = r*4 + 1
+	$base/short.frame = r*4 + 2
+	$base/top.frame = r*4 + 3
 	long = $base/long
 	short = $base/short
 

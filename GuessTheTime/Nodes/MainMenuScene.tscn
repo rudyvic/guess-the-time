@@ -170,7 +170,7 @@ margin_right = 173.309
 margin_bottom = 41.6384
 focus_mode = 0
 theme = ExtResource( 8 )
-disabled = true
+toggle_mode = true
 enabled_focus_mode = 0
 icon = SubResource( 5 )
 __meta__ = {
@@ -229,10 +229,10 @@ __meta__ = {
 [node name="Label" type="Label" parent="MainMenuScene/MainMenuLayer/AboutPopup/CenterContainer/GridContainer"]
 margin_right = 168.0
 margin_bottom = 75.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.784314, 0.760784, 0.168627, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Rudy Vicario
 2021"
 align = 1
@@ -251,10 +251,10 @@ custom_constants/separation = 5
 margin_top = 96.0
 margin_right = 168.0
 margin_bottom = 120.0
-custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.784314, 0.760784, 0.168627, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
 text = "Follow me on:"
 align = 1
 __meta__ = {
@@ -337,10 +337,10 @@ __meta__ = {
 [node name="lblHighscore" type="Label" parent="MainMenuScene/MainMenuLayer/StatsPopup/CenterContainer/GridContainer"]
 margin_right = 166.0
 margin_bottom = 40.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.784314, 0.760784, 0.168627, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Highscore: 0"
 align = 1
 valign = 1
@@ -359,10 +359,10 @@ custom_constants/separation = 10
 margin_top = 58.0
 margin_right = 166.0
 margin_bottom = 133.0
-custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.0666667, 0.572549, 0.87451, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 3 )
 text = "Last scores:
 0, 0, 0, 0, 0"
 align = 1
@@ -391,20 +391,22 @@ __meta__ = {
 }
 
 [node name="lblVersion" type="Label" parent="MainMenuScene"]
-margin_left = 3.44839
+margin_left = 4.57086
 margin_top = 352.425
-margin_right = 43.4484
-margin_bottom = 366.425
+margin_right = 44.5709
+margin_bottom = 368.425
 custom_fonts/font = ExtResource( 5 )
-text = "v0.7"
+text = "vx.x.x"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="MainMenuScene/MainMenuLayer/CenterContainer/GridContainer/btnLearn" to="MainMenuScene" method="_on_btnLearn"]
 [connection signal="pressed" from="MainMenuScene/MainMenuLayer/CenterContainer/GridContainer/btnStart" to="MainMenuScene" method="_on_btnStart"]
 [connection signal="pressed" from="MainMenuScene/MainMenuLayer/CenterContainer/GridContainer/btnStats" to="MainMenuScene" method="_on_btnStats"]
 [connection signal="pressed" from="MainMenuScene/MainMenuLayer/CenterContainer/GridContainer/HBoxContainer/btnAbout" to="MainMenuScene" method="_on_btnAbout"]
 [connection signal="pressed" from="MainMenuScene/MainMenuLayer/CenterContainer/GridContainer/HBoxContainer/btnLanguage" to="MainMenuScene" method="_on_btnLanguage"]
+[connection signal="pressed" from="MainMenuScene/MainMenuLayer/CenterContainer/GridContainer/HBoxContainer/btnVolume" to="MainMenuScene" method="_on_btnVolume"]
 [connection signal="button_up" from="MainMenuScene/MainMenuLayer/AboutPopup/CenterContainer/GridContainer/btnTwitter" to="MainMenuScene" method="_on_btnTwitter"]
 [connection signal="button_up" from="MainMenuScene/MainMenuLayer/AboutPopup/CenterContainer/GridContainer/btnWebsite" to="MainMenuScene" method="_on_btnWebsite"]
 [connection signal="button_up" from="MainMenuScene/MainMenuLayer/AboutPopup/CenterContainer/GridContainer/btnItchio" to="MainMenuScene" method="_on_btnItchio"]
