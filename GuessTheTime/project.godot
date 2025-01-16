@@ -33,7 +33,7 @@ window/size/width=207
 window/size/height=368
 window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="expand"
 
 [importer_defaults]
 
@@ -67,4 +67,5 @@ translations=PoolStringArray( "res://Languages/languages.en.translation", "res:/
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+vram_compression/import_pvrtc=true
 environment/default_environment="res://default_env.tres"

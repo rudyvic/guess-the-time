@@ -203,9 +203,6 @@ margin_right = 91.5
 margin_bottom = 165.0
 theme = ExtResource( 8 )
 popup_exclusive = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CenterContainer" type="CenterContainer" parent="MainMenuScene/MainMenuLayer/AboutPopup"]
 margin_left = 4.0
@@ -226,7 +223,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MainMenuScene/MainMenuLayer/AboutPopup/CenterContainer/GridContainer"]
+[node name="lblTitle" type="Label" parent="MainMenuScene/MainMenuLayer/AboutPopup/CenterContainer/GridContainer"]
 margin_right = 168.0
 margin_bottom = 75.0
 custom_colors/font_color = Color( 0.784314, 0.760784, 0.168627, 1 )
@@ -234,7 +231,7 @@ custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Rudy Vicario
-2021"
+2025"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
